@@ -1,4 +1,4 @@
-package net.stickycode.stereotype;
+package net.stickycode.stereotype.configured;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -10,18 +10,22 @@ import java.lang.annotation.Target;
 /**
  * <p>
  * Metadata to mark a field as requiring injection of configuration during application construction. The whole idea being that
- * there is no need for boilerplate configuration loading in the code, you just say a field needs to be injected and assume it will be.
+ * there is no need for boilerplate configuration loading in the code, you just say a field needs to be injected and know it will be.
  * </p>
+ * 
  * <h3>Testing like it runs</h3>
  * <p>
  * It is useful to use a tool like Mockwire to isolate your test contexts and use the same configuration mechanisms such that you are testing
  * you code like its going to run in production.
  * </p>
+ * 
  * <h3>Configuration mapping</h3>
  * <p>After many attempts I've settled on not allowing keys to be defined in the code, the names of configuration elements depends on the injection system
  * used but will always be determinable which is the important thing. Allowing keys and default values to be defined on the annotation just leave you back
- * to a position where boilterplate is turning up in your code. If many classes shared the same configuragion then the configuration system should define that not the
- * class being configured.
+ * to a position where boilterplate is turning up in your code.</p>
+ * <p>If many classes shared the same configuration then the configuration system allow the means for doing this, any attempt to do
+ * this at the configuration pointcut just introduces brittlenes.</p>
+ * 
  * <p>
  * <h3>Examples</h3>
  * <p>
@@ -32,9 +36,6 @@ import java.lang.annotation.Target;
  * <pre>
  * &#064;StickyComponent
  * public ConfiguredBean {
- *
- *   &#064;Configured(secret=true)
- *   private String password;
  *
  *   &#064;Configured
  *   private String user;
@@ -70,18 +71,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface Configured {
-
-  /**
-   * Don't log the value as its security sensitive information (default false)
-   */
-  boolean secret() default false;
-
-  /**
-   * @see {@link Configured#value()}
-   * A brief description of the purpose of the configuration
-   */
-  @Deprecated
-  String description() default "";
 
   /**
    * Describe the configuration such that someone reading this message could provide appropriate configuration
