@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright (c) 2017 RedEngine Ltd, http://www.redengine.co.nz. All rights reserved. -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   <parent>
     <groupId>net.stickycode.parent</groupId>
@@ -13,7 +12,7 @@
 
   <groupId>net.stickycode.stereotype</groupId>
   <artifactId>sticky-stereotype-configured</artifactId>
-  <version>3.2-SNAPSHOT</version>
+  <version>3.2</version>
   <packaging>jar</packaging>
 
   <name>sticky-stereotype-configured-3</name>
@@ -23,7 +22,7 @@
 
   <scm>
     <developerConnection>${git.url}</developerConnection>
-    <tag>HEAD</tag>
+    <tag>sticky-stereotype-configured-3.2</tag>
   </scm>
 
   <properties>
@@ -34,7 +33,7 @@
     <dependency>
       <groupId>net.stickycode.composite</groupId>
       <artifactId>sticky-composite-unittest</artifactId>
-      <version>[3.4,4)</version>
+      <version>[3.7,4)</version>
       <scope>test</scope>
     </dependency>
 
