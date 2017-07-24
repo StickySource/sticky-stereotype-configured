@@ -8,8 +8,8 @@ import java.lang.annotation.Target;
 
 /**
  * <p>
- *   Methods annotated with @CompleteConfigured will be executed after all configuration is injected and all
- *   beans annotated with @PostConfigured are called.
+ *   Methods annotated with @BeforeConfiguration will be executed before any configuration is injected and any
+ *   beans annotated with @PreConfigured are called.
  *
  *   In most DI systems, a context refresh, or event of some kind occurs after the beans are wired. By creating a
  *   separate wiring stage, it is impossible for beans to set some things up until configuration is also complete. At
@@ -31,5 +31,5 @@ import java.lang.annotation.Target;
 @Target({ElementType.METHOD, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface CompleteConfigured {
+public @interface BeforeConfiguration {
 }
